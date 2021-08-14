@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int MAXSIZE = 5;
+int stack[5];
+int top = -1;
+
+void push ()
+{
+    int x ;
+    printf("Enter data");
+    scanf("%d",&x);
+    if(top=5-1)
+        {
+            printf("Overflow");
+            }
+    else
+   {
+       top++;
+    stack[top]=x;
+   } 
+}
+void display()
+{
+    int i;
+    for(i=top;i>=0;i--)
+        printf("%d",stack[i]);
+
+}
+int main()
+{
+void push();
+void display();
+}
