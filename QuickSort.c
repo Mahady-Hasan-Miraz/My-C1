@@ -1,13 +1,27 @@
+// Implementation of QuickSort algorithm //
+
+// Mahady Hasan Miraz //
+// ID: 1935202037  //
+
 #include<stdio.h>
 int main()
 {
-    int i, n, Arr[]={5,10,3,25,3,67,45};
+    int i, n, Arr[50]/*={10, 16, 8, 12, 15, 6, 3, 9, 5, 99}*/;
 
 
-    n = sizeof(Arr)/sizeof(Arr[0]);
+    //n = sizeof(Arr)/sizeof(Arr[0]);
+
+    printf("How many elements to enter : ");
+    scanf("%d",&n);
+
+    printf("Enter %d elements : ",n);
+    for( i=0;i<n;++i)
+    {
+      scanf("%d",&Arr[i]);
+    }
 
     //Now sort
-    sort(Arr, 0, n-1);
+    quicksort(Arr, 0, n-1);
 
     //Print sorted Array
     printf("Sorted Element : ");
@@ -16,35 +30,71 @@ int main()
     return 0;
 }
 
-void sort(int Arr[50], int First, int Last)
+void quicksort(int Arr[50], int First, int Last)
 {
-    int pivot,temp,first, last;
+    int pivot,temp,i, j;
 
     if(First<Last)
     {
         pivot=First;
-        first=First;
-        last=Last;
+        i=First;
+        j=Last;
 
-        while(first<last)
+        while(i<j)
         {
-            while(Arr[first]<=Arr[pivot] && first<Last)
-            first++;
+            while(Arr[i]<=Arr[pivot] && i<Last)
+            i++;
 
-            while(Arr[last]>Arr[pivot])
-            last--;
+            while(Arr[j]>Arr[pivot])
+            j--;
 
-            if(first<last)
+            if(i<j)
             {
-                temp=Arr[first];
-                Arr[first]=Arr[last];
-                Arr[last]=temp;
+                temp=Arr[i];
+                Arr[i]=Arr[j];
+                Arr[j]=temp;
             }
         }
         temp=Arr[pivot];
-        Arr[pivot]=Arr[last];
-        Arr[last]=temp;
-        sort(Arr, First, last-1);
-        sort(Arr, last+1, Last);
+        Arr[pivot]=Arr[j];
+        Arr[j]=temp;
+        quicksort(Arr, First, j-1);
+        quicksort(Arr, j+1, Last);
     }
 }
+/*
+##  Algorithm of quickSorting method  ##
+
+Partition(A[],low,high)
+{
+ 
+    while(i<j)
+    {
+
+           do
+                {
+                     i++;
+                 } while (A[i]<=pivot);
+          do
+               {
+                   j--;
+               } while(A[j]>pivot);
+
+          if(i<j)
+                {
+                   Swap(A[i],a[j]);
+                }
+        }
+    swap(A[low], A[j])
+    return j;
+}
+
+QuickSort(A[],low,high)
+
+{
+      j= Patition(A[],low,high);
+      QuickSort(A[],low,j);
+      QuickSort(A[],j+1,high);
+}
+
+*/
