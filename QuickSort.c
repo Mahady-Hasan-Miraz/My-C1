@@ -11,7 +11,7 @@ int main()
 
     //n = sizeof(Arr)/sizeof(Arr[0]);
 
-    printf("How many elements to enter : ");
+    printf("How many elements do you want to sort? : ");
     scanf("%d",&n);
 
     printf("Enter %d elements : ",n);
