@@ -7,26 +7,26 @@
 
 
 // merge sort function
-void mergeSort(int arr[], int lowerbound, int upperbound)
+void mergeSort(int arr[], int low, int high)
 {
-    if(lowerbound < upperbound)
+    if(low < high)
     {
-        int midpoint = (lowerbound + upperbound) / 2;
-        mergeSort(arr, lowerbound, midpoint);
-        mergeSort(arr, midpoint + 1, upperbound);
-        merge(arr, lowerbound, midpoint, upperbound);
+        int mid = (low + high) / 2;
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid + 1, high);
+        merge(arr, low, mid, high);
     }
 }
 
 // function to merge the subarrays
-void merge(int arr[], int low, int mid, int up)
+void merge(int arr[], int low, int mid, int high)
 {
     int b[5];   //same size of a[]
     int i, j, k;
     k = 0;
     i = low;
     j = mid + 1;
-    while(i <= mid && j <= up)
+    while(i <= mid && j <= high)
     {
         if(arr[i] < arr[j])
         {
@@ -43,12 +43,12 @@ void merge(int arr[], int low, int mid, int up)
         b[k++] = arr[i++];
     }
   
-    while(j <= up)
+    while(j <= high)
     {
         b[k++] = arr[j++];
     }
   
-    for(i=up; i >= low; i--)
+    for(i=high; i >= low; i--)
     {
         arr[i] = b[--k];  // copying back the sorted list to a[]
     } 
