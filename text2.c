@@ -17,7 +17,8 @@ void merge(int arr[], int start, int mid, int end) {
   j = 0;
   k = start;
 
-  while (i < len1 && j < len2) {
+  while (i < len1 && j < len2) 
+  {
     if (leftArr[i] <= rightArr[j]) {
       arr[k] = leftArr[i];
       i++;
@@ -28,16 +29,14 @@ void merge(int arr[], int start, int mid, int end) {
     k++;
   }
 
-  while (i < len1) {
-    arr[k] = leftArr[i];
-    i++;
-    k++;
+  while (i < len1) 
+  {
+    arr[k++] = leftArr[i++];
   }
 
-  while (j < len2) {
-    arr[k] = rightArr[j];
-    j++;
-    k++;
+  while (j < len2) 
+  {
+    arr[k++] = rightArr[j++];
   }
 }
 
