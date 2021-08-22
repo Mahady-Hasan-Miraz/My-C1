@@ -6,17 +6,17 @@
 #include <stdio.h>
 
 void main() {
-  int arr[50];/* = {6, 5, 12, 10, 9, 1};*/
-  int size;/* = sizeof(arr) / sizeof(arr[0]);*/
+  int arr[50]= {6, 5, 12, 10, 9, 1};
+  int size= sizeof(arr) / sizeof(arr[0]);
 
-  printf("How many elements do you want to sort? : ");
+  /*printf("How many elements do you want to sort? : ");
   scanf("%d",&size);
 
   printf("Enter %d elements : ",size);
   for(int i=0;i<size;++i)
   {
     scanf("%d",&arr[i]);
-  }
+  }*/
 
 
   mergeSort(arr, 0, size - 1);
@@ -25,62 +25,61 @@ void main() {
   printArray(arr, size);
 }
 
-void mergeSort(int arr[], int l, int z) {
-  if (l < z) {
+void mergeSort(int arr[], int low, int up) {
+  if (low < up) {
 
-    int m = (l+z) / 2;
+    int mid = (low+up) / 2;
 
-    mergeSort(arr, l, m);
-    mergeSort(arr, m + 1, z);
-    merge(arr, l, m, z);
+    mergeSort(arr, low, mid);
+    mergeSort(arr, mid + 1, up);
+    merge(arr, low, mid, up);
   }
 }
 
-void merge(int arr[], int x, int y, int z) {
+void merge(int arr[], int low, int mid, int up) {
 
-  int n1 = y - x + 1;
-  int n2 = z - y;
+  int lsai = mid - low + 1; //index of left sub array//n1
+  int rsai = up - mid;  // index of left sub array//n2
 
-  int L[n1], M[n2];
-
-  for (int i = 0; i < n1; i++)
-    L[i] = arr[x + i];
-  for (int j = 0; j < n2; j++)
-    M[j] = arr[y + 1 + j];
-
+  int b[lsai], c[rsai];
   int i, j, k;
+
+  for ( i = 0; i < lsai; i++)
+    b[i] = arr[low++];
+
+  for ( j = 0; i < rsai; i++)
+    arr[j] = arr[low++];
+
+
   i = 0;
   j = 0;
-  k = x;
+  k = low;
 
-  while (i < n1 && j < n2) {
-    if (L[i] <= M[j]) {
-      arr[k] = L[i];
-      i++;
-    } else {
-      arr[k] = M[j];
-      j++;
+  while (i < lsai && j < rsai) {
+    if (b[i] <= c[j]) 
+    {
+      arr[k] = b[i++];
+    } 
+    else 
+    {
+      arr[k] = c[j++];
     }
     k++;
   }
 
-  while (i < n1) {
-    arr[k] = L[i];
-    i++;
-    k++;
+  while (i <= lsai) {
+    arr[k++] = b[i++];
   }
 
-  while (j < n2) {
-    arr[k] = M[j];
-    j++;
-    k++;
+  while (j <= rsai) {
+    arr[k++] = c[j++];
   }
 }
 
 void printArray(int arr[], int size) {
   for (int i = 0; i < size; i++)
     printf("%d ", arr[i]);
-  printf("\n");
+    printf("\n");
 }
 
 
