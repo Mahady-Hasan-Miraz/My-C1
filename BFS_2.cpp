@@ -1,51 +1,52 @@
 // BFS algorithm in C++
 
+ /* Mahady Hasan Miraz
+  ID 1935202037 */
+  
 #include <iostream>
 #include <list>
 
 using namespace std;
 
 class Graph {
-  int numVertices;
+  int n;
   list<int>* adjLists;
   bool* visited;
 
    public:
   Graph(int vertices);
   void addEdge(int src, int dest);
-  void BFS(int startVertex);
+  void BFS(int origin);
 };
 
-
 Graph::Graph(int vertices) {
-  numVertices = vertices;
+  n = vertices;
   adjLists = new list<int>[vertices];
 }
-
 
 void Graph::addEdge(int src, int dest) {      // Add edges to the graph
   adjLists[src].push_back(dest);
   adjLists[dest].push_back(src);
 }
 
-void Graph::BFS(int startVertex) {
-  visited = new bool[numVertices];      // BFS algorithm
-  for (int i = 0; i < numVertices; i++)
+void Graph::BFS(int origin) {
+  visited = new bool[n];      // BFS algorithm
+  for (int i = 0; i < n; i++)
     visited[i] = false;
 
   list<int> queue;
 
-  visited[startVertex] = true;
-  queue.push_back(startVertex);
+  visited[origin] = true;
+  queue.push_back(origin);
 
   list<int>::iterator i;
 
   while (!queue.empty()) {
-    int currVertex = queue.front();
-    cout << currVertex << " ";
+    int visit = queue.front();
+    cout << visit << " ";
     queue.pop_front();
 
-    for (i = adjLists[currVertex].begin(); i != adjLists[currVertex].end(); ++i) {
+    for (i = adjLists[visit].begin(); i != adjLists[visit].end(); ++i) {
       int adjVertex = *i;
       if (!visited[adjVertex]) {
         visited[adjVertex] = true;
