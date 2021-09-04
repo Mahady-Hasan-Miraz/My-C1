@@ -32,16 +32,18 @@ int main ()
     cin >> n;
     cout << "Enter the number of Edges : ";
     cin >> m;
-    cout << "Enter the Edges :\n ";
+    cout << "Enter the Edges :\n";
 
     for(i=0; i <= n; i++)
     {
         visted[i]=false;    //let visited stack is empty
     }
+
     int x,y;    //to get edges
     for(i=0; i < m;i++)
     {
-        cin >> x >> y;
+        cout << "\t\t ";
+        cin >> x >> y;        // Undirected graph
         adj[x].push_back(y); //push y in x vector list
         adj[y].push_back(x); //push x in y vector list
     }
