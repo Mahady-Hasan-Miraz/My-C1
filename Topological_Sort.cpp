@@ -1,22 +1,28 @@
+// Implementation of Topological sort in C++
+
+ /* Mahady Hasan Miraz
+  ID 1935202037 */
+
 #include<bits/stdc++.h>
 using namespace std;
 
-vector < int > graph[105];
-bool visited[105];
+vector < int > graph[100];
+bool visited[100];
 
 vector < int > result;
 
-void dfs(int source)
+void dfs(int node)
 {
-    visited[source] = 1;
-    for (int i = 0; i < graph[source].size(); i++)
+
+    visited[node] = 1;
+    for (int i = 0; i < graph[node].size(); i++)
     {
-        int next = graph[source][i];
+        int next = graph[node][i];
         if (visited[next] == 0)
             dfs(next);
     }
     // all children explored
-   // result.push_back(source); // newly included
+    result.push_back(node); // newly included
 }
 
 int main()
@@ -28,12 +34,12 @@ int main()
 
     for (int i = 0; i < edges; i++)
     {
-        int u, v;
-        cin >> u >> v;
-        graph[u].push_back(v);
-        graph[v].push_back(u);
+        int x, y;
+        cout << "\t ";
+        cin >> x >> y;
+        graph[x].push_back(y);
     }
-dfs(1);
+
     for (int i = 1; i <= nodes; i++)
     {
         if (visited[i] == 0)
@@ -41,10 +47,10 @@ dfs(1);
     }
 
     reverse(result.begin(), result.end());
-    cout << "DFS order: ";
+    cout << "Topological order: ";
     for (int i = 0; i < result.size(); i++)
     {
-        cout << nodes << ' ';
+        cout << result[i] << ' ';
     }
     cout << endl;
     return 0;

@@ -1,62 +1,43 @@
-// C++ program to print DFS traversal from
-// a given vertex in a given graph
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-// Graph class represents a directed graph
-// using adjacency list representation
-class Graph
-{
-public:
-	map<int, bool> visited;
-	map<int, list<int>> adj;
+vector <int> graph[100];
+bool visited[100];
 
-	// function to add an edge to graph
-	void addEdge(int v, int w);
-
-	// DFS traversal of the vertices
-	// reachable from v
-	void DFS(int v);
-};
-// Add edges
-void Graph::addEdge(int v, int w)
-{
-	adj[v].push_back(w); // Add w to v’s list.
-}
-// DFS algorithm
-void Graph::DFS(int v)
-{
-	// Mark the current node as visited and
-	// print it
-	visited[v] = true;
-	cout << v << " ";
-
-	// Recur for all the vertices adjacent
-	// to this vertex
-	list<int>::iterator i;
-	for (i = adj[v].begin(); i != adj[v].end(); ++i)
-		if (!visited[*i])
-			DFS(*i);
+void dfs(int source){
+    visited[source] = 1;
+    for (int i = 0; i < graph[source].size(); i++){
+        int next = graph[source][i];
+        if (visited[next] == 0)
+            dfs(next);
+    }
 }
 
-// Driver code
 int main()
 {
-	// Create a graph given in the above diagram
-	Graph g;
-  g.addEdge(1,4);
-  g.addEdge(4,3);
-  g.addEdge(3,9);
-  g.addEdge(3,10);
-  g.addEdge(3,2);
-  g.addEdge(2,8);
-  g.addEdge(8,7);
-  g.addEdge(7,5);
-  g.addEdge(5,6);
+    int nodes, edges;
+cout << "Enter the number of Vertices : ";  cin >> nodes;
+cout << "Enter the number of Edges : ";  cin >> edges;
+cout << "Enter the Edges :\n";
 
-	cout << "Following is Depth First Traversal"
-			" (starting from vertex 1) \n";
-	g.DFS(1);
+    for (int i = 0; i < edges; i++){
+        int u, v;
+        cin >> u >> v;
+        graph[u].push_back(v);
+        graph[v].push_back(u);
+    }
 
-	return 0;
+    dfs(1);
+
+    for (int i = 0; i < nodes; i++){
+        if (visited[i] == 1){
+            cout << "Node " << i << " is visited." << endl;
+
+        }
+        else{
+            cout << "Node " << i << " is not visited" << endl;
+        }
+    }
+
+    return 0;
 }

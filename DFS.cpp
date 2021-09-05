@@ -6,20 +6,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N=100;
-bool visted[N];
-vector<int> adj[N];// Adjecentcy list //array of vectors
+bool visted[100];
+vector<int> adj[100];                    // Adjecentcy list //array of vectors
 
 void dfs(int node)
 {
     visted[node]=1;
     cout << node << " ";
 
-    vector<int>::iterator it;       //to point at the memory addresses of STL containers
+    vector<int>::iterator it;            //to point at the memory addresses of STL containers
     for (it=adj[node].begin(); it != adj[node].end(); it++)
     {
-        if ( visted[*it]);
-        else{
+        if ( visted[*it]==0)            // can also write--> if ( visted[*it]);      else{   dfs(*it);   }
+        {
             dfs(*it);
         }
     }
@@ -27,28 +26,31 @@ void dfs(int node)
 
 int main ()
 {
-    int n,m,i;
+    int nodes,edges,i;
     cout << "Enter the number of Vertices : ";
-    cin >> n;
+    cin >> nodes;
     cout << "Enter the number of Edges : ";
-    cin >> m;
+    cin >> edges;
     cout << "Enter the Edges :\n";
 
-    for(i=0; i <= n; i++)
+   
+    for(i=0; i < edges; i++)
     {
-        visted[i]=false;    //let visited stack is empty
+        int x,y;                          //to get edges
+        cout << "\t ";
+        cin >> x >> y;                //Undirected graph
+        adj[x].push_back(y);          //push y in x vector list
+        adj[y].push_back(x);          //push x in y vector list
     }
 
-    int x,y;    //to get edges
-    for(i=0; i < m;i++)
+    for(i=0; i <= nodes; i++)
     {
-        cout << "\t\t ";
-        cin >> x >> y;        // Undirected graph
-        adj[x].push_back(y); //push y in x vector list
-        adj[y].push_back(x); //push x in y vector list
+        visted[i]=false;              //let visited stack is empty
     }
-    	cout << "Following is Depth First Traversal\n";
+
+    cout << "DFS order: ";
     dfs(1);
+
     return 0;
 
 }
