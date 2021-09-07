@@ -3,13 +3,14 @@
  /* Mahady Hasan Miraz
   ID 1935202037 */
 
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>           //#include<bits/stdc++.h>
 using namespace std;
 
 vector < int > graph[100];
 bool visited[100];
 
-vector < int > result;
+vector < int > result;          // Adjecentcy list // vector array
 
 void dfs(int node)
 {
@@ -18,11 +19,11 @@ void dfs(int node)
     for (int i = 0; i < graph[node].size(); i++)
     {
         int next = graph[node][i];
-        if (visited[next] == 0)
+        if (visited[next] == 0)             // all children explored
             dfs(next);
     }
-    // all children explored
-    result.push_back(node); // newly included
+    
+    result.push_back(node);
 }
 
 int main()
@@ -36,8 +37,8 @@ int main()
     {
         int x, y;
         cout << "\t ";
-        cin >> x >> y;
-        graph[x].push_back(y);
+        cin >> x >> y;                  //Directed graph
+        graph[x].push_back(y);          //push x in y vector list
     }
 
     for (int i = 1; i <= nodes; i++)

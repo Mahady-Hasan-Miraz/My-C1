@@ -3,11 +3,13 @@
  /* Mahady Hasan Miraz
   ID 1935202037 */
   
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
 bool visted[100];
-vector<int> adj[100];                    // Adjecentcy list //array of vectors
+vector<int> adj[100];                    // Adjecentcy list // vector array
 
 void dfs(int node)
 {
@@ -45,7 +47,7 @@ int main ()
 
     for(i=0; i <= nodes; i++)
     {
-        visted[i]=false;              //let visited stack is empty
+        visted[i]=false;              //let all nodes are unvisited
     }
 
     cout << "DFS order: ";
