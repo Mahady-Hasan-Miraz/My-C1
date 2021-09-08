@@ -1,10 +1,6 @@
-/*input
-5
-1 2 100
-2 1 19
-3 2 27
-4 1 25
-5 3 15
+/*
+	Mahady Hasan Miraz
+	ID : 19352025037
 */
 
 #include <stdio.h>
@@ -42,12 +38,17 @@ void schedule(job data[], int n) {
 
 int main() {
 	job data[10];
-	int n, i, j;
-	printf("Enter number of jobs:\n");
+	int n, i, j=0;
+	printf("Enter number of jobs: ");
 	scanf("%d", &n);
 	printf("Enter jobs in the order (id deadline profit):\n");
-	for (i = 0; i < n; i++)
-		scanf("%d%d%d", &data[i].id, &data[i].profit, &data[i].deadline);
+
+    for (i = 0; i < n; i++)
+		{     
+            data[i].id=i+1;
+            printf("%d ",i+1);
+            scanf("%d%d",  &data[i].profit, &data[i].deadline);	
+        }
 	qsort(data, n, sizeof(job), compare);
 	schedule(data, n);
 	return 0;
