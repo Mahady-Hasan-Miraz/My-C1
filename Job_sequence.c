@@ -9,47 +9,49 @@
 #include <math.h>
 #define MIN(a, b) (a < b ? a : b)
 
-typedef struct job_ {
+typedef struct job_
+{
 	int id, profit, deadline;
 }job;
 
-int compare(const void *a, const void *b) { // descending
-	return (((job *) a)->profit < ((job *) b)->profit);
+int compare(const void *a, const void *b) 
+{
+	return (((job *) a)->profit < ((job *) b)->profit); 
 }
 
-void schedule(job data[], int n) {
-	int i, j, check[n], ans = 0;
+void timeslot(job data[], int n) {
+	int i, j, check[n], maxp = 0;
 	memset(check, 0, sizeof(check));
 	for (i = 0; i < n; i++) {
 		for (j = MIN(data[i].deadline, n)-1; j >= 0; j--) {
 			if (!check[j]) {
 				check[j] = data[i].id;
-				ans += data[i].profit;
+				maxp += data[i].profit;
 				break;
 			}
 		}
 	}
-	printf("The sequence of job is: \n");
+	printf("Job sequence is: ");
 	for (i = 0; i < n; i++)
 		if (check[i])
 			printf("%d ", check[i]);
-	printf("\nThe max profit is: %d\n", ans);
+	printf("\nThe max profit is: %d\n", maxp);
 }
-
-int main() {
+int main() 
+{
 	job data[10];
 	int n, i, j=0;
 	printf("Enter number of jobs: ");
 	scanf("%d", &n);
-	printf("Enter jobs in the order (id deadline profit):\n");
+	printf("Enter job Profit  Deadline :\n");
 
     for (i = 0; i < n; i++)
 		{     
             data[i].id=i+1;
-            printf("%d ",i+1);
-            scanf("%d%d",  &data[i].profit, &data[i].deadline);	
+            printf("    Job  %d : ",i+1);
+            scanf("%d%d", &data[i].profit, &data[i].deadline);	
         }
 	qsort(data, n, sizeof(job), compare);
-	schedule(data, n);
+	timeslot(data, n);
 	return 0;
 }
