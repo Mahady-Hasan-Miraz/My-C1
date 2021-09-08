@@ -6,18 +6,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
 #define MIN(a, b) (a < b ? a : b)
 
 typedef struct job_
 {
 	int id, profit, deadline;
 }job;
-
-int compare(const void *a, const void *b) 
-{
-	return (((job *) a)->profit < ((job *) b)->profit); 
-}
 
 void timeslot(job data[], int n) {
 	int i, j, check[n], maxp = 0;
@@ -37,6 +31,10 @@ void timeslot(job data[], int n) {
 			printf("%d ", check[i]);
 	printf("\nThe max profit is: %d\n", maxp);
 }
+int compare(const void *a, const void *b) 
+{
+	return (((job *) a)->profit < ((job *) b)->profit); 
+}
 int main() 
 {
 	job data[10];
@@ -52,6 +50,7 @@ int main()
             scanf("%d%d", &data[i].profit, &data[i].deadline);	
         }
 	qsort(data, n, sizeof(job), compare);
+
 	timeslot(data, n);
 	return 0;
 }
