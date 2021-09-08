@@ -8,13 +8,13 @@ using namespace std;
 // Bisection Method. The function is x^3 - x^2 + 2
 double func(double x)
 {
-	return x*x*x - x*x + 2;
+	return x*x - 4*x - 2;
 }
 
 // Derivative of the above function which is 3*x^x - 2*x
 double derivFunc(double x)
 {
-	return 3*x*x - 2*x;
+	return 2*x - 4;
 }
 
 // Function to find the root
