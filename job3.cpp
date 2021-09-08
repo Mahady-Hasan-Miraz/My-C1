@@ -14,7 +14,7 @@ struct Job {
  
 // Function to schedule jobs to maximize profit
 void scheduleJobs(vector<Job> jobs)        // no-ref, no-const
-{
+{                                                                                                                                                                                                                                                                
     // stores the maximum profit that can be earned by scheduling jobs
     int profit = 0;
  
@@ -61,8 +61,7 @@ int main()
     // profit associated with it
     vector<Job> jobs =
     {
-        { 1, 9, 15 }, { 2, 2, 2 }, { 3, 5, 18 }, { 4, 7, 1 }, { 5, 4, 25 },
-        { 6, 2, 20 }, { 7, 5, 8 }, { 8, 7, 10 }, { 9, 4, 12 }, { 10, 3, 5 }
+        { 1, 9, 15 }, { 2, 2, 2 }, { 3, 5, 18 }, { 4, 7, 1 }, { 5, 4, 25 }
     };
  
     // schedule jobs and calculate the maximum profit

@@ -14,7 +14,7 @@
 #define MIN(a, b) (a < b ? a : b)
 
 typedef struct job_ {
-	int id, deadline, profit;
+	int id, profit, deadline;
 }job;
 
 int compare(const void *a, const void *b) { // descending
@@ -47,7 +47,7 @@ int main() {
 	scanf("%d", &n);
 	printf("Enter jobs in the order (id deadline profit):\n");
 	for (i = 0; i < n; i++)
-		scanf("%d%d%d", &data[i].id, &data[i].deadline, &data[i].profit);
+		scanf("%d%d%d", &data[i].id, &data[i].profit, &data[i].deadline);
 	qsort(data, n, sizeof(job), compare);
 	schedule(data, n);
 	return 0;
