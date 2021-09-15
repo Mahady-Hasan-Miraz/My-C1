@@ -89,19 +89,6 @@ int main()
     return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* The algorithm is:
 Algorithm Merge(A,B,m,n)
 {
@@ -131,4 +118,5 @@ Algorithm MargeSort (A,l,h)
                MargeSort (A, Mid+1, h);
                 Marge(A,l,mid,h)   ;
             }
+}
 */
