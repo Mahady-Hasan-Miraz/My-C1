@@ -14,8 +14,8 @@ int main()
         }
     //int a[]={10,2,44,8,90,100,105};
     //n = sizeof(a)/sizeof(a[0]);
-	// move boundary One by one
-	for (i = 0; i < n-1; i++)
+
+	for (i = 0; i < n-1; i++)	// move boundary One by one
 	{
 		min = i;// Find min element in unsorted array
 		for (j = i+1; j < n; j++)
