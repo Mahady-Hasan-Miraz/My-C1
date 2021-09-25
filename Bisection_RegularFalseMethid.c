@@ -18,8 +18,8 @@ else if(f(a)==0 || f(b)==0){
 printf("Ite       a               b               f(a)            f(b)            c               f(c)            error \n");
 do{
         cold=c;
-        c=((a+b)/2);
-        // c=(((a*f(b))-(b*f(a)))/(f(b)-f(a)));
+        //c=((a+b)/2);//Bisection
+         c=(((a*f(b))-(b*f(a)))/(f(b)-f(a)));//Regular false
         printf("%2d\t  %4.4f\t  %4.4f\t  %4.4f\t  %4.4f\t  %4.4f\t  %4.4f\t  ",i++,a,b,f(a),f(b),c,f(c));
         if(f(c)==0){
                 break;
