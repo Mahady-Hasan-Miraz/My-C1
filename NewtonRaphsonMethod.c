@@ -20,7 +20,7 @@ float df (float x)
 {
     return 6*x -10;
 } */
-void main()
+int main()
 {
     int itr, maxmitr;
     float h, x0, x1, allerr;
@@ -28,7 +28,7 @@ void main()
     scanf("%f %f %d", &x0, &allerr, &maxmitr);
     for (itr=1; itr<=maxmitr; itr++)
     {
-        h=(f(x0)*df(x0))/((df(x0)*df(x0))-(f(x0)*ddf(x0)));
+        //h=(f(x0)*df(x0))/((df(x0)*df(x0))-(f(x0)*ddf(x0)));
        // x1=x0-h;
          x1 = x0 - (f(x0)/df(x0));
         printf(" At Iteration no. %3d, x = %9.6f\n", itr, x1);
