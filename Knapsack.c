@@ -12,7 +12,7 @@ void main()
     no_items = sizeof(weight) / sizeof(weight[0]);
     int used[no_items];
 
-    for (i = 0; i < no_items; ++i)
+    for (i = 0; i < no_items; i++)
     {
             used[i] = 0;
     }
@@ -21,7 +21,7 @@ void main()
     while (cur_weight > 0)
     {
         item = 1;
-        for (i = 0; i < no_items; ++i)
+        for (i = 0; i < no_items; i++)
         {
             if ((used[i] == 0) &&((item == 1) || ((float) profit[i] / weight[i] > (float) profit[item] / weight[item])))
             {
