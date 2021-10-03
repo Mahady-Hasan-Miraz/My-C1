@@ -2,6 +2,16 @@
   "files.associations": {
     "stdlib.h": "c",
     "iostream": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "*.tcc": "c",
+    "ratio": "c",
+    "system_error": "c",
+    "array": "c",
+    "functional": "c",
+    "regex": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "random": "c"
   }
 }
