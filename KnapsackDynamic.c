@@ -41,6 +41,7 @@ void knapsack(int profit[],int weight[],int n,int W)
 void main()
 {
     int profit[50], weight[50], i, j, n, W;
+
 	printf("Capacity of Knapsack=");
 	scanf("%d",&W);
 
@@ -50,8 +51,7 @@ void main()
 	for(i=1;i<=n;i++)
 	{       
 		printf("Enter Profit & Weight of Object %d = ",i);
-		scanf("%d",&profit[i]);
-		scanf("%d",&weight[i]);
+		scanf("%d %d",&profit[i],&weight[i]);
 	}
     printf("\n");
 	knapsack(profit,weight,n,W);
