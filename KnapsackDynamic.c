@@ -1,3 +1,7 @@
+/* 
+	Mahady Hasan Miraz
+	ID: 1935202037  
+*/
 #include<stdio.h>
 
 void knapsack(int profit[],int weight[],int n,int W)

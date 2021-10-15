@@ -1,3 +1,7 @@
+/*
+    Mahady Hasan Miraz
+    ID: 1935202037
+*/
 #include <stdio.h>
 #include <math.h>
 #define f(x) (sin(x))
@@ -20,15 +24,15 @@ int main()
     switch(c)
     {
         case 1:
-            res = (f(a+h)-f(a))/h;
+            res = (f(a+h)-f(a))/h;    //Forward Difference
             printf("f'(a) = %lf", res);
             break;
         case 2:
-            res = (f(a+h)-f(a-h))/(2*h);
+            res = (f(a+h)-f(a-h))/(2*h);    //Central Difference
             printf("f'(a) = %lf", res);
             break;
         case 3:
-            res = (f(a)-f(a-h))/h;
+            res = (f(a)-f(a-h))/h;    //Backward Difference
             printf("f'(a) = %lf", res);
             break;
         default:
