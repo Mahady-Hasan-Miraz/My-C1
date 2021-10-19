@@ -31,6 +31,6 @@ int main()
         }
     }
     s = s * h/3;
-    printf("\nIntegration is: %.f\n", s);
+    printf("Integration is: %.f\n", s);
  return 0;
 }
