@@ -1,13 +1,11 @@
 
-
 #include <limits.h>
 #include <stdio.h>
 #include <stdbool.h>
- 
 
-#define V 9
+#define MAX 100
 
-int minDistance(int dist[], bool sptSet[])
+int minDistance(int dist[], bool sptSet[], int V)
 {
 
     int min = INT_MAX, min_index;
@@ -19,18 +17,9 @@ int minDistance(int dist[], bool sptSet[])
     return min_index;
 }
 
-void printSolution(int dist[])
-{
-    printf("Vertex \t\t Distance from Source\n");
-    for (int i = 0; i < V; i++)
-        printf("%d \t\t %d\n", i, dist[i]);
-}
-
-void dijkstra(int graph[V][V], int src)
+void dijkstra(int graph[MAX][MAX], int src, int V)
 {
     int dist[V];
-
- 
     bool sptSet[V]; 
 
     for (int i = 0; i < V; i++)
@@ -39,29 +28,32 @@ void dijkstra(int graph[V][V], int src)
  
     for (int count = 0; count < V - 1; count++) {
 
-        int u = minDistance(dist, sptSet);
+        int u = minDistance(dist, sptSet, V);
         sptSet[u] = true;
         for (int v = 0; v < V; v++)
             if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
                 && dist[u] + graph[u][v] < dist[v])
                 dist[v] = dist[u] + graph[u][v];
     }
-    printSolution(dist);
+    printf("\nVertex \t Distance from %d\n",src);
+    for (int i = 0; i < V; i++)
+        printf("%d \t %d\n", i+1, dist[i]);
+
 }
 int main()
 {
    
-    int graph[V][V] = { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
-                        { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-                        { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
-                        { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
-                        { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-                        { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
-                        { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
-                        { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-                        { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+    int graph[MAX][MAX],u,V,i,j;
+    printf("Enter no. of vertices: ");
+    scanf("%d",&V);
+    printf("\nEnter the adjacency matrix:\n\n");
+    for(i=0;i<V;i++)
+        for(j=0;j<V;j++)
+            scanf("%d",&graph[i][j]);
+    printf("\nEnter the starting node: ");
+    scanf("%d",&u);
  
-    dijkstra(graph, 0);
+    dijkstra(graph, u, V);
  
     return 0;
 }

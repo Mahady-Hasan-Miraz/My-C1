@@ -1,2 +1,2 @@
-	printf("No of Objects=");
-	scanf("%d",&n);
+
+    return 0;
