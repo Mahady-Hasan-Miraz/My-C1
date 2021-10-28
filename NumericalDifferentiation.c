@@ -29,7 +29,7 @@ int main()
             printf("\nForward Difference:\n\tf'(a)= (f(a+h)-f(a))/h\n");
             printf("\tf'(a) = f(%.8lf + %.8lf) - f(%.8lf) / %.8lf\n",a,h,a,h);
             printf("\tf'(a) = f(%.8lf) - f(%.8lf) / %.8lf\n",a+h,a,h);
-            printf("\tf'(a) = %.8lf - %lf / %.8lf\n",f(a+h),f(a),h);
+            printf("\tf'(a) = %.8lf - %.8lf / %.8lf\n",f(a+h),f(a),h);
             printf("\tf'(a) = %.8lf / %.8lf\n",f(a+h)-f(a),h);
             printf("\tf'(a) = %.8lf\n", (f(a+h)-f(a))/h);
             // break;
