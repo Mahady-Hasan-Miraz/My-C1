@@ -1,2 +1,1 @@
-	printf("No of Objects=");
-	scanf("%d",&n);
+rintf("%4s", "INF");
