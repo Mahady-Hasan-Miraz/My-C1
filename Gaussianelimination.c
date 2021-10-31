@@ -9,7 +9,7 @@ void main()
   scanf("%d",&n);
   if(n<10)
   {
-    printf("\nEnter the elements of augmented matrix row-wise:\n\n");
+    printf("\nEnter coefficients of Augmented Matrix :\n\n");
   for(i=1; i<=n; i++)
   {
     for(j=1; j<=(n+1); j++)
@@ -18,6 +18,16 @@ void main()
       scanf("%f",&A[i][j]);
     }
   }
+  printf("\nThe given matrix is: \n\n");
+  for(i=1; i<=n; i++)
+  {
+    for(j=1; j<=(n+1); j++)
+    {
+      printf("%f\t",A[i][j]);
+    }
+    printf("\n\n");
+  }
+	 /* Applying Gauss  Elimination */
   for(i=1; i<=n; i++)
   {
     for(j=1; j<=n; j++)
