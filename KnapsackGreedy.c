@@ -56,6 +56,6 @@ void main()
             total_profit += (1 + cur_weight / weight[item]) * value[item];
         }
     }
-    printf("\nTotal profit: %.2f .\nTotal weight: %.2f\n\n", total_profit,total_weight);
+    printf("\nTotal profit: %.2f \n\n", total_profit);
     }
 }
